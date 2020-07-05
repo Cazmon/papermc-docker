@@ -1,11 +1,12 @@
 ########################################################
 ############## We use a java base image ################
 ########################################################
-FROM openjdk:11 AS build
+FROM openjdk:14 AS build
 
-MAINTAINER Marc Tönsing <marc@marc.tv>
+MAINTAINER Marc Tönsing <marc@marc.tv
+MAINTAINER Elraro <elraro@elraro.eu>
 
-ARG paperspigot_ci_url=https://papermc.io/api/v1/paper/1.15.2/latest/download
+ARG paperspigot_ci_url=https://papermc.io/api/v1/paper/1.16.1/latest/download
 ENV PAPERSPIGOT_CI_URL=$paperspigot_ci_url
 
 WORKDIR /opt/minecraft
@@ -20,7 +21,7 @@ RUN useradd -ms /bin/bash minecraft && \
 USER minecraft
 
 # Run paperclip and obtain patched jar
-RUN /usr/local/openjdk-11/bin/java -jar /opt/minecraft/paperclip.jar; exit 0
+RUN java -jar /opt/minecraft/paperclip.jar; exit 0
 
 # Copy built jar
 RUN mv /opt/minecraft/cache/patched*.jar paperspigot.jar
@@ -28,19 +29,13 @@ RUN mv /opt/minecraft/cache/patched*.jar paperspigot.jar
 ########################################################
 ############## Running environment #####################
 ########################################################
-FROM openjdk:11 AS runtime
+FROM openjdk:14 AS runtime
 
 # Working directory
 WORKDIR /data
 
 # Obtain runable jar from build stage
 COPY --from=build /opt/minecraft/paperspigot.jar /opt/minecraft/paperspigot.jar
-
-# Install and run rcon
-ARG RCON_CLI_VER=1.4.8
-ADD https://github.com/itzg/rcon-cli/releases/download/${RCON_CLI_VER}/rcon-cli_${RCON_CLI_VER}_linux_amd64.tar.gz /tmp/rcon-cli.tgz
-RUN tar -x -C /usr/local/bin -f /tmp/rcon-cli.tgz rcon-cli && \
-  rm /tmp/rcon-cli.tgz
 
 # Obtain server config
 ADD server.properties /opt/minecraft/server.properties
@@ -50,7 +45,6 @@ VOLUME "/data"
 
 # Expose minecraft port
 EXPOSE 25565/tcp
-EXPOSE 25565/udp
 
 # Set memory size
 ARG memory_size=3G
@@ -63,4 +57,4 @@ ENV JAVAFLAGS=$java_flags
 WORKDIR /data
 
 # Entrypoint with java optimisations
-ENTRYPOINT /usr/local/openjdk-11/bin/java -jar -Xms$MEMORYSIZE -Xmx$MEMORYSIZE $JAVAFLAGS /opt/minecraft/paperspigot.jar --nojline nogui
+ENTRYPOINT java -jar -Xms$MEMORYSIZE -Xmx$MEMORYSIZE $JAVAFLAGS /opt/minecraft/paperspigot.jar --nojline nogui
