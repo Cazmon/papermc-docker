@@ -1,6 +1,8 @@
 # Docker Minecraft PaperMC Server
 
-Docker Minecraft PaperMC server 1.16.1 
+Docker Minecraft PaperMC server 1.16.1
+
+![Docker Build CI](https://github.com/elraro/papermc-docker/workflows/Docker%20Build%20CI/badge.svg)
 
 ## Quick Start
 ```sh
