@@ -37,4 +37,4 @@ MEMORYSIZE = 1G
 
 ## Credits 
 
-Based on the the work of [Marc TÃnsing](https://github.com/mtoensing/Docker-Minecraft-PaperMC-Server/)
+Based on the the work of [Marc TÃ¤nsing](https://github.com/mtoensing/Docker-Minecraft-PaperMC-Server/)
