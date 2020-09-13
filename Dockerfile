@@ -1,9 +1,9 @@
 ########################################################
 ############## We use a java base image ################
 ########################################################
-FROM openjdk:14 AS build
+FROM openjdk:14-slim AS build
 
-MAINTAINER Marc Tönsing <marc@marc.tv
+MAINTAINER Marc Tönsing <marc@marc.tv>
 MAINTAINER Elraro <elraro@elraro.eu>
 
 ARG paperspigot_ci_url=https://papermc.io/api/v1/paper/1.16.1/latest/download
@@ -29,7 +29,7 @@ RUN mv /opt/minecraft/cache/patched*.jar paperspigot.jar
 ########################################################
 ############## Running environment #####################
 ########################################################
-FROM openjdk:14 AS runtime
+FROM openjdk:14-slim AS runtime
 
 # Working directory
 WORKDIR /data
