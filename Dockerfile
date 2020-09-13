@@ -6,7 +6,7 @@ FROM openjdk:14-slim AS build
 MAINTAINER Marc Tönsing <marc@marc.tv>
 MAINTAINER Elraro <elraro@elraro.eu>
 
-ARG paperspigot_ci_url=https://papermc.io/api/v1/paper/1.16.1/latest/download
+ARG paperspigot_ci_url=https://papermc.io/api/v1/paper/1.16.3/latest/download
 ENV PAPERSPIGOT_CI_URL=$paperspigot_ci_url
 
 WORKDIR /opt/minecraft
