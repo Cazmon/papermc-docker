@@ -6,7 +6,7 @@ Docker Minecraft PaperMC server 1.16.3
 
 ## Quick Start
 ```sh
-docker pull elraro/papermc-docker
+docker pull devsd/purpurmc-docker:tagname
 ```
 
 ```sh
