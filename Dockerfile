@@ -7,7 +7,7 @@ MAINTAINER Marc Tönsing <marc@marc.tv>
 MAINTAINER Elraro <elraro@elraro.eu>
 
 ARG paperspigot_ci_url=https://purpur.pl3x.net/api/v1/purpur/1.16.5/1084/download
-ENV PAPERSPIGOT_CI_URL=$purpurclip_ci_url
+ENV PAPERSPIGOT_CI_URL=$paperspigot_ci_url
 
 WORKDIR /opt/minecraft
 
