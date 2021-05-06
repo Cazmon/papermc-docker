@@ -13,7 +13,7 @@ docker pull elraro/papermc-docker
 docker run \
   --rm \
   --name mcserver \
-  -e MEMORYSIZE='1G' \
+  -e MEMORYSIZE='2G' \
   -v /homes/joe/mcserver:/data:rw \
   -p 25565:25565 \
 -i elraro/papermc-docker:latest
@@ -35,7 +35,7 @@ docker run --rm \
 
 ## Environment variable
 
-MEMORYSIZE = 1G 
+MEMORYSIZE = 2G 
 
 ## Credits 
 
